@@ -206,6 +206,7 @@ public class VoiceSTTOrder extends AppCompatActivity implements MenuAdapter.MyCl
     };
 
     public void VoiceMatch(String match) {
+        Log.d("match1111", matches.get(0));
         int i;
         if(match.equals("결제")){
             Intent intent = new Intent(VoiceSTTOrder.this, ReciptActivity.class);
