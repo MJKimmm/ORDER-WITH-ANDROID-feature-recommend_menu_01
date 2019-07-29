@@ -350,19 +350,22 @@ public class MenuRecommendActivity extends AppCompatActivity {
         public void onResults(Bundle results) {
             matches = results.getStringArrayList(SpeechRecognizer.RESULTS_RECOGNITION);
             for (int i = 0; i < recommend.size(); i++) {
+                Log.d("kkkkk11",matches.get(0));
                 if (matches.get(0).equals(recommend.get(i).getTitle())) {
-                    Log.d("kkkkk","if문 실행");
+                    Log.d("kkkkk11","if문 실행");
                     Intent resultIntent = new Intent();
                     resultIntent.putExtra("recommend", recommend.get(i).getTitle());
                     setResult(RESULT_OK,resultIntent);
                     finish();
+                    break;
+
                 }
 
-                else {
+                if(i == recommend.size()) {
                     //String str = "추천 메뉴로 다시 한 번 말씀해주세요.";
                     //VoiceStarting2(str + result);
                     VoiceStarting2(result);
-                    Log.d("kkkkk","else문 실행");
+                    Log.d("kkkkk11","else문 실행");
                 }
             }
         }
@@ -408,7 +411,7 @@ public class MenuRecommendActivity extends AppCompatActivity {
     class RequestThread extends Thread {
         @Override
         public void run() {
-            String url = "http://192.168.35.160:9000/index";
+            String url = "http://192.168.35.81:9000/index";
             StringRequest request = new StringRequest(
                     Request.Method.GET,
                     url,
